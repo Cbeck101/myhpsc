@@ -2,33 +2,20 @@
 # To include in newton.py
 
 from numpy import *
+# This algoritm works with varying succcess in differant regions. Implement a test for convergence to reduce the number of itterations once a solution has been found
 
-x=2.
-s=1.
+def sqrt2(x):
 
-for k in range(6):
-	s=0.5*(s+ x/s)
+	
+	s=1.
+	kmax=100
+	tol = 1.0e-14
+	for k in range(kmax):
+		s0=s
+		s=0.5*(s+ x/s)
+		delta_s = s-s0
+		print "s=%20.15f" % s
+		if abs(delta_s/x) < tol: # N.b error relative to x 
 
-print s
-
-def fvals_sqrt(x):
-    """
-    Return f(x) and f'(x) for applying Newton to find a square root.
-    """
-    f = x**2 - 4.
-    fp = 2.*x
-    return f, fp
-
-def test1(debug_solve=False):
-    """
-    Test Newton iteration for the square root with different initial
-    conditions.
-    """
-    from numpy import sqrt
-    for x0 in [1., 2., 100.]:
-        print " "  # blank line
-        x,iters = solve(fvals_sqrt, x0, debug=debug_solve)
-        print "solve returns x = %22.15e after %i iterations " % (x,iters)
-        fx,fpx = fvals_sqrt(x)
-        print "the value of f(x) is %22.15e" % fx
-        assert abs(x-2.) < 1e-14, "*** Unexpected result: x = %22.15e"  % x
+		   break
+	print "After %g iterations s= %20.15f" % (k+1,s)
