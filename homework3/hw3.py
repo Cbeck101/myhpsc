@@ -1,6 +1,16 @@
 # $UWHPSC/codes/homework3/test_code.py 
 # To include in newton.py
 
+from numpy import *
+
+x=2.
+s=1.
+
+for k in range(6):
+	s=0.5*(s+ x/s)
+
+print s
+
 def fvals_sqrt(x):
     """
     Return f(x) and f'(x) for applying Newton to find a square root.
