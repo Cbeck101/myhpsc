@@ -23,11 +23,11 @@ def solve(x0):
 
               if abs(delta_x/x0) < tol:
                   break
-
+#%22.15e.
 def target_func(x):
     
-     f = x**2-x      
-     fp = 2.*x
+     f = sin(x)-(1.-x**2)      
+     fp = cos(x)+2.*x
       
      return f,fp
 
